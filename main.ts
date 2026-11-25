@@ -1,10 +1,11 @@
-// Worst Fix Ever: Funniest Commit Message — winning line (V1).
-// The fix "works": the crash is gone, because the button that crashed is gone.
-// Gate: exactly one line, at most 100 characters, no trailing newline.
-import { mkdirSync, writeFileSync } from "node:fs";
+// Worst Fix Ever: Funniest Commit Message
+// Entry: "fix: stop the crash by deleting the most-clicked button"
+// Writes the single commit-message line to $MAKEFUN_OUTPUT_DIR/entry.txt.
+// Gate: satu baris, 58 karakter, tanpa trailing newline.
+import { writeFileSync, mkdirSync } from "node:fs";
 
-const line = "fix: stop the crash by deleting the most-clicked button";
-
-mkdirSync("/output", { recursive: true });
-writeFileSync("/output/entry.txt", line, "utf8");
-console.log(line);
+const COMMIT = "fix: stop the crash by deleting the most-clicked button";
+const outDir = process.env.MAKEFUN_OUTPUT_DIR || "/output";
+mkdirSync(outDir, { recursive: true });
+writeFileSync(`${outDir}/entry.txt`, COMMIT, "utf8");
+console.log(COMMIT);
